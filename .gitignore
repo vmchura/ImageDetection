@@ -1,0 +1,6 @@
+*.pt
+annotated_frame/*
+challenge_annotated_images/*
+challenge_images/*
+video_frame/*
+

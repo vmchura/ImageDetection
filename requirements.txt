@@ -1,0 +1,3 @@
+pytube==15.0.0
+ultralytics==8.3.96
+pytubefix==8.12.2

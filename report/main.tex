@@ -29,41 +29,87 @@
     Firstly because in the search of datasets to images I've found this challenge: `Butterfly Detection' by Nuwe.io.
     But the challenge is actually classification, with the intention to practice even more I attempt the challenge with the knowledge learnt from the previous Project 1.
     \begin{center}
-    \includegraphics[width=0.6\textwidth]{challenge_butterfly_classification}
-    \includegraphics[width=0.3\textwidth]{challenge_result}
+        \includegraphics[width=0.6\textwidth]{challenge_butterfly_classification}
+        \includegraphics[width=0.3\textwidth]{challenge_result}
     \end{center}
 
     Back to this Project of Object Detection, I tried to use Yolo-11s on the images from the challenge I mentioned and a YouTube's video entirely of butterflies,
     the results are shown in the figure~\ref{fig:pre-trained}
     \begin{figure}
-    \begin{subfigure}{.9\textwidth}
-      \centering
-      \includegraphics[width=.4\linewidth]{pretrained/negative_imagen_723}
-      \includegraphics[width=.4\linewidth]{pretrained/negative_imagen_880}
-      \caption{Negative class in the training data of the challenge}
-      \label{fig:negative-pretrained}
-    \end{subfigure}
+        \begin{subfigure}{.9\textwidth}
+            \centering
+            \includegraphics[width=.4\linewidth]{pretrained/negative_imagen_723}
+            \includegraphics[width=.4\linewidth]{pretrained/negative_imagen_880}
+            \caption{Negative class in the training data of the challenge}
+            \label{fig:negative-pretrained}
+        \end{subfigure}
 
-    \begin{subfigure}{.9\textwidth}
-      \centering
-      \includegraphics[width=.4\linewidth]{pretrained/positive_imagen_45}
-      \includegraphics[width=.4\linewidth]{pretrained/positive_imagen_888}
-      \caption{Positive class in the training data of the challenge}
-      \label{fig:positive-pretrainied}
-    \end{subfigure}
+        \begin{subfigure}{.9\textwidth}
+            \centering
+            \includegraphics[width=.4\linewidth]{pretrained/positive_imagen_45}
+            \includegraphics[width=.4\linewidth]{pretrained/positive_imagen_888}
+            \caption{Positive class in the training data of the challenge}
+            \label{fig:positive-pretrainied}
+        \end{subfigure}
 
-    \begin{subfigure}{.9\textwidth}
-        \centering
-        \includegraphics[width=.4\linewidth]{pretrained/photogram_16}
-        \includegraphics[width=.4\linewidth]{pretrained/photogram_93}
-        \caption{Images of the YouTube video}
-        \label{fig:video-pretrainied}
-    \end{subfigure}
-    \caption{Images results using only the pre-trained Yolo 11s}
-    \label{fig:pre-trained}
+        \begin{subfigure}{.9\textwidth}
+            \centering
+            \includegraphics[width=.4\linewidth]{pretrained/photogram_16}
+            \includegraphics[width=.4\linewidth]{pretrained/photogram_93}
+            \caption{Images of the YouTube video}
+            \label{fig:video-pretrainied}
+        \end{subfigure}
+        \caption{Images results using only the pre-trained Yolo 11s}
+        \label{fig:pre-trained}
     \end{figure}
 
     \newpage
-    \centerline{\Large\textbf{Deep Learning Project 2: Object detection}}
+    \large\textbf{Part II: Transfer learning to detect one novel class}
+    Following the same problem, to detect butterflies, firstly I've chosen the dataset with only 2096 images.
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{trained_small_butterflies/dataset_simple}
+    \end{center}
+    The dataset only has a pre-process of resizing to 640.
+    The relevant metrics for training and validation are shown in the figure~\ref{fig:results-small}.
+    From the charts, specially from box\_loss and cls\_loss I can see that the model learns very rapidly from the train data and it also the learning is successful against the validation set.
+    Since we are measuring only one class, precision and recall also are almost 1.0.
+    The model looks perfect, but if I test it against the dataset from the Challenge, I've only got a poor accuracy of approximately 0.5.
+    Using the inference of the model to infer from the images of the challenge and YouTube's video are in the figure~\ref{fig:trained_small_butterflies}
+    It looks like the images from training and validation are quite similar, that is why it looks like there is an overfitting.
+    \begin{figure}
+        \begin{center}
+            \includegraphics[width=0.8\textwidth]{trained_small_butterflies/results}
+            \includegraphics[width=0.4\textwidth]{trained_small_butterflies/confusion_matrix_simple}
+        \end{center}
+        \caption{Result of training of the small dataset of butterflies.}
+        \label{fig:results-small}
+    \end{figure}
+    \begin{figure}
+        \begin{subfigure}{.9\textwidth}
+            \centering
+            \includegraphics[width=.4\linewidth]{trained_small_butterflies/negative_imagen_723}
+            \includegraphics[width=.4\linewidth]{trained_small_butterflies/negative_imagen_880}
+            \caption{Negative class in the training data of the challenge}
+            \label{fig:negative-trained_small_butterflies}
+        \end{subfigure}
+
+        \begin{subfigure}{.9\textwidth}
+            \centering
+            \includegraphics[width=.4\linewidth]{trained_small_butterflies/positive_imagen_45}
+            \includegraphics[width=.4\linewidth]{trained_small_butterflies/positive_imagen_888}
+            \caption{Positive class in the training data of the challenge}
+            \label{fig:positive-trained_small_butterflies}
+        \end{subfigure}
+
+        \begin{subfigure}{.9\textwidth}
+            \centering
+            \includegraphics[width=.4\linewidth]{trained_small_butterflies/photogram_16}
+            \includegraphics[width=.4\linewidth]{trained_small_butterflies/photogram_93}
+            \caption{Images of the YouTube video}
+            \label{fig:video-trained_small_butterflies}
+        \end{subfigure}
+        \caption{Images results using transfer learning using the small dataset of butterflies}
+        \label{fig:trained_small_butterflies}
+    \end{figure}
 
 \end{document}

@@ -121,6 +121,7 @@
         \includegraphics[width=0.8\textwidth]{trained_bigger_butterflies/dataset_enhanced}
     \end{center}
     The dataset only has a pre-process of resizing to 640.
+    But during the training, it was resized to 1024 by the library of Yolo.
     The relevant metrics for training and validation are shown in the figure~\ref{fig:results-big}.
     From the charts, specially from box\_loss and cls\_loss I can see that the during the training it learns fast but the validation do not follow.
     Specially val/cls\_loss, it got stuck.
@@ -173,7 +174,6 @@
         \includegraphics[width=0.8\textwidth]{trained_two_classes/dataset_two_classes}
     \end{center}
     The dataset only has a pre-process of resizing to 640.
-    But during the training, it was resized to 1024 by the library of Yolo.
     The relevant metrics for training and validation are shown in the figure~\ref{fig:results-two-classes}.
     From the charts, it looks like the hyper-parameters are correct, because the validation metrics follow to the acquired by training.
     Since in this case I am measuring two classes and I care more precision, the analysis of the precision curve is relevant.
@@ -191,8 +191,9 @@
         \begin{center}
             \includegraphics[width=0.8\textwidth]{trained_two_classes/results}
             \includegraphics[width=0.4\textwidth]{trained_two_classes/confusion_matrix}
+            \includegraphics[width=0.4\textwidth]{trained_two_classes/P_curve}
         \end{center}
-        \caption{Result of training of the small dataset of butterflies.}
+        \caption{Result of training of the two classes, butterflies and moths.}
         \label{fig:results-two-classes}
     \end{figure}
     \begin{figure}

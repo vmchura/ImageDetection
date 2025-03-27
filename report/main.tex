@@ -20,6 +20,7 @@
 \begin{document}
 
     \centerline{\Large\textbf{Deep Learning Project 2: Object detection}}
+    \Large\textbf{UsageOfYoloPretrained.ipynb}
 
     Objective of the document: Details about the process of implementing algorithms for object detection.
 
@@ -65,6 +66,7 @@
 
     \newpage
     \large\textbf{Part II: Transfer learning to detect one novel class}
+    \Large\textbf{TrainingWithOneDataSet.ipynb}
     Following the same problem, to detect butterflies, firstly I've chosen the dataset with only 2096 images.
     \begin{center}
         \includegraphics[width=0.8\textwidth]{trained_small_butterflies/dataset_simple}
@@ -114,6 +116,7 @@
 
     \newpage
     Continuing the same problem but with extra-dataset, I've found an extra-dataset and I managed to merge using RoboFlow.
+    \Large\textbf{TrainingWithTwoDataSet.ipynb}
     \begin{center}
         \includegraphics[width=0.8\textwidth]{trained_bigger_butterflies/dataset_enhanced}
     \end{center}
@@ -164,6 +167,7 @@
 
     \newpage
     \textbf{Transfer learning to detect two novel classes}
+    \Large\textbf{TrainingWithTwoDistinctClasses.ipynb}
     For this experiment, I used the dataset of butterflies and moths.
     \begin{center}
         \includegraphics[width=0.8\textwidth]{trained_two_classes/dataset_two_classes}
@@ -219,4 +223,19 @@
         \label{fig:trained_two_classes}
     \end{figure}
 
+    \centerline{\Large\textbf{Part III: Conclusions}}
+    \begin{itemize}
+        \item The first attempt used the pre-trained YOLO-11s model on images from the \textit{Butterfly Detection} challenge and a YouTube video of butterflies.
+        \item The results showed some detection capabilities but lacked accuracy due to the model being pre-trained on general datasets.
+        \item A YOLO model was trained using a dataset of 2,096 butterfly images, improving performance on the validation set with high precision and recall (approximately 1.0).
+        \item However, the model failed to generalize to the challenge dataset, achieving only an accuracy of approximately 0.5, indicating overfitting due to similar training and validation images.
+        \item An additional dataset was integrated using RoboFlow, leading to a slight improvement in accuracy (approximately 0.52 on the challenge dataset).
+        \item Despite this improvement, validation loss did not consistently decrease, and overfitting remained an issue.
+        \item The model was trained on both butterflies and moths, with training images resized to 1024.
+        \item The validation performance was reasonable, and analysis showed that a confidence threshold of 60\% was optimal.
+        \item However, when tested on the challenge dataset, accuracy remained around 0.52, suggesting that synthetic-looking images in the challenge dataset contributed to poor generalization.
+        \item Overfitting is a major issue, likely due to the similarity between training and validation images.
+        \item Expanding the dataset improved results slightly, but the model still struggles with synthetic-looking images.
+        \item Future improvements could involve \textbf{data augmentation}, \textbf{domain adaptation techniques}, \textbf{collecting more diverse real-world butterfly images}, or \textbf{labelling some images of the challenge as a detection problem instead of just classification}.
+    \end{itemize}
 \end{document}

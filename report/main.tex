@@ -112,6 +112,7 @@
         \label{fig:trained_small_butterflies}
     \end{figure}
 
+    \newpage
     Continuing the same problem but with extra-dataset, I've found an extra-dataset and I managed to merge using RoboFlow.
     \begin{center}
         \includegraphics[width=0.8\textwidth]{trained_bigger_butterflies/dataset_enhanced}
@@ -159,6 +160,63 @@
         \end{subfigure}
         \caption{Images results using transfer learning using the doble/big dataset of butterflies}
         \label{fig:trained_bigger_butterflies}
+    \end{figure}
+
+    \newpage
+    \textbf{Transfer learning to detect two novel classes}
+    For this experiment, I used the dataset of butterflies and moths.
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{trained_two_classes/dataset_two_classes}
+    \end{center}
+    The dataset only has a pre-process of resizing to 640.
+    But during the training, it was resized to 1024 by the library of Yolo.
+    The relevant metrics for training and validation are shown in the figure~\ref{fig:results-two-classes}.
+    From the charts, it looks like the hyper-parameters are correct, because the validation metrics follow to the acquired by training.
+    Since in this case I am measuring two classes and I care more precision, the analysis of the precision curve is relevant.
+    In the figure~\ref{fig:results-two-classes} I can extract that a confidence of 60\% or 0.6 is enough to capture many of the characteristics.
+    I can also get to that conclusions from the mAP50 y mAP50-95 charts.
+    In this case the model do not look perfect, but is fine for the validation set.
+    Talking about the challenge of classification of butterflies.
+    What if I assume a detection of a month is equivalent to the detection of a butterfly.
+    I test this hypothesis against the dataset from the Challenge, I've only got a poor accuracy of approximately 0.52.
+    Which is the same value from the previous experiment.
+    Reviewing the data from the Challenge, the images look like very synthetic.
+    Maybe this is the reason why the low metrics.
+    Using the inference of the model to infer from the images of the challenge and YouTube's video are in the figure~\ref{fig:trained_two_classes}
+    \begin{figure}
+        \begin{center}
+            \includegraphics[width=0.8\textwidth]{trained_two_classes/results}
+            \includegraphics[width=0.4\textwidth]{trained_two_classes/confusion_matrix}
+        \end{center}
+        \caption{Result of training of the small dataset of butterflies.}
+        \label{fig:results-two-classes}
+    \end{figure}
+    \begin{figure}
+        \begin{subfigure}{.9\textwidth}
+            \centering
+            \includegraphics[width=.4\linewidth]{trained_two_classes/negative_imagen_723}
+            \includegraphics[width=.4\linewidth]{trained_two_classes/negative_imagen_880}
+            \caption{Negative class in the training data of the challenge}
+            \label{fig:negative-trained_two_classes}
+        \end{subfigure}
+
+        \begin{subfigure}{.9\textwidth}
+            \centering
+            \includegraphics[width=.4\linewidth]{trained_two_classes/positive_imagen_45}
+            \includegraphics[width=.4\linewidth]{trained_two_classes/positive_imagen_888}
+            \caption{Positive class in the training data of the challenge}
+            \label{fig:positive-trained_two_classes}
+        \end{subfigure}
+
+        \begin{subfigure}{.9\textwidth}
+            \centering
+            \includegraphics[width=.4\linewidth]{trained_two_classes/photogram_16}
+            \includegraphics[width=.4\linewidth]{trained_two_classes/photogram_93}
+            \caption{Images of the YouTube video}
+            \label{fig:video-trained_two_classes}
+        \end{subfigure}
+        \caption{Images results using transfer learning with just two classes, butterflies and moths}
+        \label{fig:trained_two_classes}
     \end{figure}
 
 \end{document}
